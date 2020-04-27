@@ -1,3 +1,4 @@
+import traceback
 from flask import request, make_response, render_template
 from flask_restful import Resource
 from werkzeug.security import safe_str_cmp
@@ -15,7 +16,9 @@ from marshmallow import ValidationError
 from blacklist import BLACKLIST
 
 USER_EXISTS = "A user with that username already exists."
-USER_CREATED = "User created successfully."
+EMAIL_EXISTS = "A user with that email address already exists."
+SUCCESS_REGISTER_MESSAGE = "Account successfully created. To activate, please check your email for a registration confirmation link."
+FAILED_TO_CREATE = "Internal server error. Failed to create user."
 USER_NOT_FOUND = "User not found."
 USER_DELETED = "User deleted."
 INVALID_CREDENTIALS = "Invalid credentials."
@@ -25,6 +28,7 @@ USER_CONFIRMED = "User confirmed."
 
 user_schema = UserSchema()
 
+
 class UserRegister(Resource):
     @classmethod
     def post(cls):
@@ -33,9 +37,16 @@ class UserRegister(Resource):
         if UserModel.find_by_username(user.username):
             return {"message": USER_EXISTS}, 400
 
-        user.save_to_db()
+        if UserModel.find_by_email(user.username):
+            return {"message": EMAIL_EXISTS}, 400
 
-        return {"message": USER_CREATED}, 201
+        try:
+            user.save_to_db()
+            user.send_confirmation_email()
+            return {"message": SUCCESS_REGISTER_MESSAGE}, 201
+        except:
+            traceback.print_exc()
+            return {'message': FAILED_TO_CREATE}, 500
 
 
 class User(Resource):
@@ -58,7 +69,9 @@ class User(Resource):
 class UserLogin(Resource):
     @classmethod
     def post(cls):
-        user_data = user_schema.load(request.get_json())
+        user_json = request.get_json()
+        user_data = user_schema.load(user_json, partial=("email",))
+
 
         user = UserModel.find_by_username(user_data.username)
 
