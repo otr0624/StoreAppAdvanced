@@ -38,6 +38,9 @@ class Mailgun:
         )
 
         if response.status_code != 200:
+            print(response.status_code)
+            print(cls.MAILGUN_API_KEY)
+            print(cls.MAILGUN_DOMAIN)
             raise MailgunException(FAILED_CONFIRMATION_EMAIL)
 
         return response
