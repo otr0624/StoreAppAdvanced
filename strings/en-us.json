@@ -1,0 +1,33 @@
+{
+"confirmation_not_found": "Confirmation reference not found.",
+"confirmation_expired": "The link has expired.",
+"confirmation_already_confirmed": "Registration has already been confirmed.",
+"confirmation_user_not_found": "User not found.",
+"confirmation_resend_successful": "Email confirmation successfully re-sent.",
+"confirmation_resend_fail": "Internal server error. Failed to resend confirmation email.",
+
+"item_not_found": "Item not found.",
+"item_name_already_exists": "An item with name {} already exists.",
+"item_error_inserting": "An error occurred while inserting the item.",
+"item_deleted": "Item deleted.",
+
+"store_deleted": "Store deleted.",
+"store_not_found": "Store not found.",
+"store_already_exists": "A store with name {} already exists.",
+"store_error_creating": "An error occurred creating the store.",
+
+"user_exists": "A user with that username already exists.",
+"user_email_exists": "A user with that email address already exists.",
+"user_success_register": "Account successfully created. To activate, please check your email for a registration confirmation link.",
+"user_failed_to_create": "Internal server error. Failed to create user.",
+"user_not_found": "User not found.",
+"user_deleted": "User deleted.",
+"user_invalid_credentials": "Invalid credentials.",
+"user_logged_out": "Successfully logged out.",
+"user_not_confirmed_error": "You have not confirmed your registration, please check your email <{}>.",
+"user_confirmed": "User confirmed.",
+
+"mailgun_failed_load_api_key": "Failed to load MailGun API key.",
+"mailgun_failed_load_domain": "Failed to load MailGun domain.",
+"mailgun_error_confirmation_email": "Error in sending confirmation email. User registration failed."
+}
