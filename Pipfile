@@ -15,6 +15,7 @@ marshmallow = "*"
 marshmallow-sqlalchemy = "*"
 requests = "*"
 python-dotenv = "*"
+flask-uploads = "*"
 
 [requires]
 python_version = "3.8"
