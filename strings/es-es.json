@@ -29,5 +29,8 @@
 
 "mailgun_failed_load_api_key": "Failed to load MailGun API key.",
 "mailgun_failed_load_domain": "Failed to load MailGun domain.",
-"mailgun_error_confirmation_email": "Error in sending confirmation email. User registration failed."
+"mailgun_error_confirmation_email": "Error in sending confirmation email. User registration failed.",
+
+"image_uploaded": "Image uploaded.",
+"image_illegal_extension": "Extension '{}' is not allowed."
 }
