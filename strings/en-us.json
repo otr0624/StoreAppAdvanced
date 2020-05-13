@@ -32,5 +32,7 @@
 "mailgun_error_confirmation_email": "Error in sending confirmation email. User registration failed.",
 
 "image_uploaded": "Image uploaded.",
-"image_illegal_extension": "Extension '{}' is not allowed."
+"image_illegal_extension": "Extension '{}' is not allowed.",
+"image_illegal_filename": "Filename '{}' is not allowed",
+"image_not_found": "Image not found."
 }
