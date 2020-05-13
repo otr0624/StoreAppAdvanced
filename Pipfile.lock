@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "cbde289e63ced2cfafed3fb3d5f1512c0ee734ae22c901889c89952a9fbbd62b"
+            "sha256": "67072708fd1b21f4c6ac0b94fce3152bee348e61acf0843c45bb5b814ecd1068"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -84,11 +84,8 @@
             "version": "==2.4.1"
         },
         "flask-uploads": {
-            "hashes": [
-                "sha256:53ecbd6033667d50ae02b63adebbaa33c7fc56c09e5293025810cf9d841ecb02"
-            ],
-            "index": "pypi",
-            "version": "==0.2.1"
+            "git": "https://github.com/maxcountryman/flask-uploads.git",
+            "ref": "f66d7dc93e684fa0a3a4350a38e41ae00483a796"
         },
         "idna": {
             "hashes": [
@@ -140,11 +137,11 @@
         },
         "marshmallow": {
             "hashes": [
-                "sha256:56663fa1d5385c14c6a1236badd166d6dee987a5f64d2b6cc099dadf96eb4f09",
-                "sha256:f12203bf8d94c410ab4b8d66edfde4f8a364892bde1f6747179765559f93d62a"
+                "sha256:c2673233aa21dde264b84349dc2fd1dce5f30ed724a0a00e75426734de5b84ab",
+                "sha256:f88fe96434b1f0f476d54224d59333eba8ca1a203a2695683c1855675c4049a7"
             ],
             "index": "pypi",
-            "version": "==3.5.2"
+            "version": "==3.6.0"
         },
         "marshmallow-sqlalchemy": {
             "hashes": [

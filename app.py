@@ -4,12 +4,16 @@ from flask import Flask, jsonify
 from flask_restful import Api
 from flask_jwt_extended import JWTManager
 from marshmallow import ValidationError
+from flask_uploads import configure_uploads, patch_request_class
 from dotenv import load_dotenv
 
 from resources.user import UserRegister, User, UserLogin, UserLogout, TokenRefresh
 from resources.item import Item, ItemList
 from resources.store import Store, StoreList
 from resources.confirmation import Confirmation, ConfirmationByUser
+from resources.image import ImageUpload
+from libs.image_helper import IMAGE_SET
+
 from ma import ma
 from db import db
 from blacklist import BLACKLIST
@@ -18,6 +22,8 @@ app = Flask(__name__)
 load_dotenv(".env", verbose=True)
 app.config.from_object("default_config")
 app.config.from_envvar("APPLICATION_SETTINGS")
+patch_request_class(app, 10 * 1024 * 1024)  # 10MB max size upload
+configure_uploads(app, IMAGE_SET)
 api = Api(app)
 
 jwt = JWTManager(app)
@@ -102,6 +108,7 @@ api.add_resource(Store, "/store/<string:name>")
 api.add_resource(StoreList, "/stores")
 api.add_resource(Confirmation, "/user_confirm/<string:confirmation_id>")
 api.add_resource(ConfirmationByUser, "/confirmation/user/<int:user_id>")
+api.add_resource(ImageUpload, "/upload/image")
 
 if __name__ == "__main__":
     db.init_app(app)

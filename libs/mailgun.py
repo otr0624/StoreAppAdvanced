@@ -18,7 +18,7 @@ class Mailgun:
     @classmethod
     def send_email(cls, email: List[str], subject: str, text: str, html: str) -> Response:
         if cls.MAILGUN_API_KEY is None:
-            raise MailgunException(gettext("mailgun_failed_load_api_key")
+            raise MailgunException(gettext("mailgun_failed_load_api_key"))
         if cls.MAILGUN_DOMAIN is None:
             raise MailgunException(gettext("mailgun_failed_load_domain"))
 

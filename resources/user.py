@@ -24,7 +24,10 @@ user_schema = UserSchema()
 class UserRegister(Resource):
     @classmethod
     def post(cls):
-        user = user_schema.load(request.get_json())
+        try:
+            user = user_schema.load(request.get_json())
+        except ValidationError as err:
+            return err.messages, 400
 
         if UserModel.find_by_username(user.username):
             return {"message": gettext("user_exists")}, 400
